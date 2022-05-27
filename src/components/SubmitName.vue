@@ -35,7 +35,7 @@
     methods: {
       onSubmit(event) {
         event.preventDefault()
-        this.$router.push("/"+this.form.orf_name);
+        this.$router.push("/orf_name/"+this.form.orf_name);
       },
     }
   }

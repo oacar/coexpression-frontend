@@ -4,8 +4,8 @@
 
     <div v-if="error" class="error">{{ error }}</div>
 
-    <div v-if="post" class="content">
-    <h2>{{post}}</h2>
+    <div v-if="result" class="content">
+    <h2>{{result}}</h2>
     <!-- <p>{{ post.body }}</p> -->
     </div>
 </div>
@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       loading: false,
-      post: null,
+      result: null,
       error: null,
     }
   },
@@ -39,13 +39,13 @@ export default {
       this.loading = true
       // replace `getPost` with your data fetching util / API wrapper
       var orfName = this.$route.params.orfName
-        const path = 'http://localhost:5000/'+orfName;
+        const path = 'http://localhost:5000/orf_name/'+orfName;
         console.log(path)
         axios.get(path)
         .then(response => {
             this.loading = false
             console.log(response.data)
-            this.post = response.data
+            this.result = response.data
         })
         .catch(error => {
             this.loading = false
