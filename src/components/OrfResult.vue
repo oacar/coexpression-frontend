@@ -5,7 +5,8 @@
     <div v-if="error" class="error">{{ error }}</div>
 
     <div v-if="result" class="content">
-    <h2>{{result}}</h2>
+    <h2>{{result.orf_id}}</h2>
+    <orf-table :coexpression="result.coexpression" :properties="result.orf_properties" :orf_id="result.orf_id" />
     <!-- <p>{{ post.body }}</p> -->
     </div>
 </div>
@@ -13,6 +14,7 @@
 
 <script>
 import axios from 'axios'
+import OrfTable from '@/components/Table.vue' 
 export default {
   data() {
     return {
@@ -20,6 +22,9 @@ export default {
       result: null,
       error: null,
     }
+  },
+  components: {
+   OrfTable 
   },
   created() {
     // watch the params of the route to fetch the data again
